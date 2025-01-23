@@ -1,21 +1,41 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <% if alert = flash[:alert] %>
-    <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
-  <% end %>
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <%= image_tag "film_icon.svg", class: "mx-auto h-10 w-auto", alt: "Reel Picks" %>
+    <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white">Update your password</h2>
+  </div>
 
-  <h1 class="font-bold text-4xl">Update your password</h1>
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <% if alert = flash[:alert] %>
+      <div class="rounded-md bg-red-950 p-4">
+        <div class="flex">
+          <div class="shrink-0">
+            <svg class="size-5 text-red-600 fill-current" aria-hidden="true" data-slot="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm font-medium text-red-200"><%= alert %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
 
-  <%= form_with url: password_path(params[:token]), method: :put, class: "contents" do |form| %>
-    <div class="my-5">
-      <%= form.password_field :password, required: true, autocomplete: "new-password", placeholder: "Enter new password", maxlength: 72, class: "block shadow rounded-md border border-gray-400 outline-none focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
-    </div>
+    <%= form_with url: password_path(params[:token]), method: :put, class: "space-y-6" do |form| %>
+      <div>
+        <%= label_tag :password, "Enter new password", class: "block text-sm/6 font-medium text-white" %>
+        <div class="mt-2">
+          <%= form.password_field :password, required: true, autofocus: true, autocomplete: "email", value: params[:email_address], class: "block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-white/10 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red-500 sm:text-sm/6" %>
+        </div>
+      </div>
 
-    <div class="my-5">
-      <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", placeholder: "Repeat new password", maxlength: 72, class: "block shadow rounded-md border border-gray-400 outline-none focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
-    </div>
+      <div>
+        <%= label_tag :password_confirmation, "Repeat new password", class: "block text-sm/6 font-medium text-white" %>
+        <div class="mt-2">
+          <%= form.password_field :password_confirmation, required: true, autofocus: true, autocomplete: "email", value: params[:email_address], class: "block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-white/10 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red-500 sm:text-sm/6" %>
+        </div>
+      </div>
 
-    <div class="inline">
-      <%= form.submit "Save", class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
-    </div>
-  <% end %>
+      <div>
+        <%= form.submit "Save", class: "flex w-full justify-center rounded-md bg-red-500 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500" %>
+      </div>
+    <% end %>
+  </div>
 </div>
