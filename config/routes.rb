@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contests
   resources :movies
   resource :session
   resources :passwords, param: :token
