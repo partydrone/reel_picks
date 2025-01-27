@@ -1,0 +1,69 @@
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <%= image_tag "film_icon.svg", class: "mx-auto h-10 w-auto", alt: "Reel Picks" %>
+    <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white">Create a new account</h2>
+  </div>
+
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <%= form_with model: @user, class: "space-y-6" do |form| %>
+      <% if @user.errors.any? %>
+        <div class="rounded-md bg-red-950 p-4">
+          <div class="flex">
+            <div class="shrink-0">
+              <svg class="size-5 text-red-500 fill-current" aria-hidden="true" data-slot="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
+            </div>
+            <div class="ml-3">
+              <h3 class="text-sm font-medium text-red-200">There <%= @user.errors.count == 1 ? "was" : "were" %> <%= pluralize @user.errors.count, "error" %> with your submission:</h3>
+              <div class="mt-2 text-sm text-red-300">
+                <ul role="list" class="list-disc space-y-1 pl-5">
+                  <% @user.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <div>
+        <%= form.label :first_name, "First name", class: "block text-sm/6 font-medium text-white" %>
+        <div class="mt-2">
+          <%= form.text_field :first_name, autofocus: true, autocomplete: "first_name", class: ["block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red-500 sm:text-sm/6", {"outline-white/10": @user.errors[:first_name].none?, "outline-red/10": @user.errors[:first_name].any?}] %>
+        </div>
+      </div>
+
+      <div>
+        <%= form.label :last_name, "Last name", class: "block text-sm/6 font-medium text-white" %>
+        <div class="mt-2">
+          <%= form.text_field :last_name, autocomplete: "last_name", class: ["block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red-500 sm:text-sm/6", {"outline-white/10": @user.errors[:last_name].none?, "outline-red-500": @user.errors[:last_name].any?}] %>
+        </div>
+      </div>
+
+      <div>
+        <%= form.label :email_address, "Email address", class: "block text-sm/6 font-medium text-white" %>
+        <div class="mt-2">
+          <%= form.email_field :email_address, required: true, autocomplete: "email", class: ["block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red-500 sm:text-sm/6", {"outline-white/10": @user.errors[:email_address].none?, "outline-red-500": @user.errors[:email_address].any?}] %>
+        </div>
+      </div>
+
+      <div>
+        <%= form.label :password, "Password", class: "block text-sm/6 font-medium text-white" %>
+        <div class="mt-2">
+          <%= form.password_field :password, required: true, autocomplete: "password", maxlength: 72, class: ["block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red-500 sm:text-sm/6", {"outline-white/10": @user.errors[:password].none?, "outline-red-500": @user.errors[:password].any?}] %>
+        </div>
+      </div>
+
+      <div>
+        <%= form.label :password_confirmation, "Confirm password", class: "block text-sm/6 font-medium text-white" %>
+        <div class="mt-2">
+          <%= form.password_field :password_confirmation, required: true, autocomplete: "password", maxlength: 72, class: ["block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red-500 sm:text-sm/6", {"outline-white/10": @user.errors[:password_confirmation].none?, "outline-red-500": @user.errors[:password_confirmation].any?}] %>
+        </div>
+      </div>
+
+      <div>
+        <%= form.submit "Sign up", class: "flex w-full justify-center rounded-md bg-red-500 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500" %>
+      </div>
+    <% end %>
+  </div>
+</div>
