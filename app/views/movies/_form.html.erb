@@ -1,0 +1,42 @@
+<%= form_with(model: movie, class: "contents") do |form| %>
+  <% if movie.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+      <ul class="list-disc ml-6">
+        <% movie.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": movie.errors[:title].none?, "border-red-400 focus:outline-red-600": movie.errors[:title].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :released_on %>
+    <%= form.date_field :released_on, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": movie.errors[:released_on].none?, "border-red-400 focus:outline-red-600": movie.errors[:released_on].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :trailer %>
+    <%= form.text_field :trailer, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": movie.errors[:trailer].none?, "border-red-400 focus:outline-red-600": movie.errors[:trailer].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :link %>
+    <%= form.text_field :link, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": movie.errors[:link].none?, "border-red-400 focus:outline-red-600": movie.errors[:link].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :earnings %>
+    <%= form.number_field :earnings, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": movie.errors[:earnings].none?, "border-red-400 focus:outline-red-600": movie.errors[:earnings].any?}] %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
