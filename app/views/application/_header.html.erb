@@ -19,8 +19,14 @@
       <a href="#" class="text-sm/6 font-semibold text-white">Company</a>
     </div>
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-      <%= link_to new_session_path, class: "text-sm/6 font-semibold text-white" do %>
-        Log in <span aria-hidden="true">&rarr;</span>
+      <% if authenticated? %>
+        <%= button_to session_path, method: :delete, class: "text-sm/6 font-semibold text-white" do %>
+          <%= Current.user.name.familiar %> | Log out <span aria-hidden="true">&rarr;</span>
+        <% end %>
+      <% else %>
+        <%= link_to new_session_path, class: "text-sm/6 font-semibold text-white" do %>
+          Log in <span aria-hidden="true">&rarr;</span>
+        <% end %>
       <% end %>
     </div>
   </nav>
@@ -48,7 +54,11 @@
             <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-stone-800" data-action="click->menu#hide">Company</a>
           </div>
           <div class="py-6">
-            <%= link_to "Log in", new_session_path, class: "-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:bg-stone-800", data: {action: "click->menu#hide"} %>
+            <% if authenticated? %>
+              <%= button_to "Log out", session_path, method: :delete, class: "-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:bg-stone-800", data: {action: "click->menu#hide"} %>
+            <% else %>
+              <%= link_to "Log in", new_session_path, class: "-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:bg-stone-800", data: {action: "click->menu#hide"} %>
+            <% end %>
           </div>
         </div>
       </div>
