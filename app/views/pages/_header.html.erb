@@ -13,10 +13,9 @@
       </button>
     </div>
     <div class="hidden lg:flex lg:gap-x-12">
-      <a href="#" class="text-sm/6 font-semibold text-white">Product</a>
-      <a href="#" class="text-sm/6 font-semibold text-white">Features</a>
-      <a href="#" class="text-sm/6 font-semibold text-white">Marketplace</a>
-      <a href="#" class="text-sm/6 font-semibold text-white">Company</a>
+      <%= link_to "Contests", contests_path, class: "text-sm/6 font-semibold text-white" %>
+      <a href="#" class="text-sm/6 font-semibold text-white">Rules</a>
+      <a href="#" class="text-sm/6 font-semibold text-white">About</a>
     </div>
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
       <% if authenticated? %>
@@ -48,10 +47,9 @@
       <div class="mt-6 flow-root">
         <div class="-my-6 divide-y divide-stone-500/25">
           <div class="space-y-2 py-6">
-            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-stone-800" data-action="click->menu#hide">Product</a>
-            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-stone-800" data-action="click->menu#hide">Features</a>
-            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-stone-800" data-action="click->menu#hide">Marketplace</a>
-            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-stone-800" data-action="click->menu#hide">Company</a>
+            <%= link_to "Contests", contests_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-stone-800", data: {action: "click->menu#hide"} %>
+            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-stone-800" data-action="click->menu#hide">Rules</a>
+            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-stone-800" data-action="click->menu#hide">About</a>
           </div>
           <div class="py-6">
             <% if authenticated? %>
