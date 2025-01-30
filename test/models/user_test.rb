@@ -27,4 +27,8 @@ class UserTest < ActiveSupport::TestCase
     @user.password = nil
     assert_not @user.valid?
   end
+
+  test "has an avatar" do
+    assert_respond_to @user, :avatar
+  end
 end
