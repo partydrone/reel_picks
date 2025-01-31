@@ -1,0 +1,125 @@
+<% content_for :title, "Profile" %>
+
+<% content_for :header do %>
+  <header class="bg-white shadow-sm">
+    <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+      <h1 class="text-lg/6 font-semibold text-stone-900">Your profile</h1>
+    </div>
+  </header>
+<% end %>
+
+<% if notice = flash[:notice] %>
+  <div class="rounded-md bg-green-200 mb-4 p-4">
+    <div class="flex">
+      <div class="shrink-0">
+        <svg class="size-5 text-green-600 fill-current" aria-hidden="true" data-slot="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>
+      </div>
+      <div class="ml-3">
+        <p class="text-sm font-medium text-green-800"><%= notice %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= form_with(model: @user) do |form| %>
+  <% if @user.errors.any? %>
+    <div class="rounded-md bg-red-100 p-4 mb-12">
+      <div class="flex">
+        <div class="shrink-0">
+          <svg class="size-5 text-red-500 fill-current" aria-hidden="true" data-slot="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
+        </div>
+        <div class="ml-3">
+          <h3 class="text-sm font-medium text-red-800">There <%= @user.errors.count == 1 ? "was" : "were" %> <%= pluralize @user.errors.count, "error" %> with your submission:</h3>
+          <div class="mt-2 text-sm text-red-700">
+            <ul role="list" class="list-disc space-y-1 pl-5">
+              <% @user.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="space-y-12">
+    <div class="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-stone-900/10 pb-12 md:grid-cols-3">
+      <div>
+        <h2 class="text-base/7 font-semibold text-stone-900">Profile</h2>
+        <p class="mt-1 text-sm/6 text-stone-600">This information will be displayed publicly so be careful what you share.</p>
+      </div>
+
+      <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2">
+        <div class="col-span-full">
+          <%= form.label :avatar, "Photo", class: "block text-sm/6 font-medium text-stone-900" %>
+          <div class="mt-2 flex items-center gap-x-3">
+            <% if @user.avatar.attached? %>
+              <%= image_tag @user.avatar.variant(resize_to_fill: [48, 48]), class: "size-12 rounded-full" %>
+            <% else %>
+              <svg class="size-12 fill-stone-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Pro 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2025 Fonticons, Inc.--><path class="fa-secondary" opacity=".4" d="M32 256c0 63 26 119.9 67.9 160.6c14-55.5 64.3-96.6 124.1-96.6l64 0c59.9 0 110.1 41.1 124.1 96.6C454 375.9 480 319 480 256C480 132.3 379.7 32 256 32S32 132.3 32 256zm304-48a80 80 0 1 1 -160 0 80 80 0 1 1 160 0z"/><path class="fa-primary" d="M412.1 416.6C398.1 361.1 347.9 320 288 320l-64 0c-59.9 0-110.1 41.1-124.1 96.6C58 375.9 32 319 32 256C32 132.3 132.3 32 256 32s224 100.3 224 224c0 63-26 119.9-67.9 160.6zm-28.5 23.4C347.5 465.2 303.5 480 256 480s-91.5-14.8-127.7-39.9c4-49.3 45.3-88.1 95.7-88.1l64 0c50.4 0 91.6 38.8 95.7 88.1zM256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-256a48 48 0 1 1 0-96 48 48 0 1 1 0 96zm-80-48a80 80 0 1 0 160 0 80 80 0 1 0 -160 0z"/></svg>
+            <% end %>
+            <%= form.file_field :avatar, accept: "image/gif,image/jpeg,image/png", class: "text-sm text-stone-600 file:px-2.5 file:py-1.5 file:rounded-md file:border-0 file:shadow-sm file:ring-1 file:ring-inset file:ring-stone-300 file:bg-white file:text-sm file:font-semibold file:text-stone-900 hover:file:bg-stone-200" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-stone-900/10 pb-12 md:grid-cols-3">
+      <div>
+        <h2 class="text-base/7 font-semibold text-stone-900">Personal Information</h2>
+        <p class="mt-1 text-sm/6 text-stone-600">Use a permanent address where you can receive mail.</p>
+      </div>
+
+      <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2">
+        <div class="sm:col-span-3">
+          <%= form.label :first_name, class: "block text-sm/6 font-medium text-stone-900" %>
+          <div class="mt-2">
+            <%= form.text_field :first_name, autocomplete: "given-name", class: ["block w-full rounded-md bg-white px-3 py-1.5 text-base text-stone-900 outline outline-1 -outline-offset-1 placeholder:text-stone-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-rose-600 sm:text-sm/6", {"outline-stone-300": @user.errors[:first_name].none?, "outline-red-300": @user.errors[:first_name].any?}] %>
+          </div>
+        </div>
+
+        <div class="sm:col-span-3">
+          <%= form.label :last_name, class: "block text-sm/6 font-medium text-stone-900" %>
+          <div class="mt-2">
+            <%= form.text_field :last_name, autocomplete: "family-name", class: ["block w-full rounded-md bg-white px-3 py-1.5 text-base text-stone-900 outline outline-1 -outline-offset-1 placeholder:text-stone-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-rose-600 sm:text-sm/6", {"outline-stone-300": @user.errors[:last_name].none?, "outline-red-300": @user.errors[:last_name].any?}] %>
+          </div>
+        </div>
+
+        <div class="sm:col-span-4">
+          <%= form.label :email_address, class: "block text-sm/6 font-medium text-stone-900" %>
+          <div class="mt-2">
+            <%= form.text_field :email_address, required: true, autocomplete: "email", class: ["block w-full rounded-md bg-white px-3 py-1.5 text-base text-stone-900 outline outline-1 -outline-offset-1 placeholder:text-stone-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-rose-600 sm:text-sm/6", {"outline-stone-300": @user.errors[:email_address].none?, "outline-red-300": @user.errors[:email_address].any?}] %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-stone-900/10 pb-12 md:grid-cols-3">
+      <div>
+        <h2 class="text-base/7 font-semibold text-stone-900">Security</h2>
+        <p class="mt-1 text-sm/6 text-stone-600">Change your password. Make it a good one. And don't forget to write it down.</p>
+      </div>
+
+      <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2">
+        <div class="sm:col-span-4">
+          <%= form.label :password, class: "block text-sm/6 font-medium text-stone-900" %>
+          <div class="mt-2">
+            <%= form.password_field :password, autocomplete: "new-password", class: ["block w-full rounded-md bg-white px-3 py-1.5 text-base text-stone-900 outline outline-1 -outline-offset-1 placeholder:text-stone-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-rose-600 sm:text-sm/6", {"outline-stone-300": @user.errors[:password].none?, "outline-red-300": @user.errors[:password].any?}] %>
+          </div>
+        </div>
+
+        <div class="sm:col-span-4">
+          <%= form.label :password_confirmation, class: "block text-sm/6 font-medium text-stone-900" %>
+          <div class="mt-2">
+            <%= form.password_field :password_confirmation, autocomplete: "new-password", class: ["block w-full rounded-md bg-white px-3 py-1.5 text-base text-stone-900 outline outline-1 -outline-offset-1 placeholder:text-stone-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-rose-600 sm:text-sm/6", {"outline-stone-300": @user.errors[:password_confirmation].none?, "outline-red-300": @user.errors[:password_confirmation].any?}] %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-6 flex items-center justify-end gap-x-6">
+    <button type="button" class="text-sm/6 font-semibold text-stone-900">Cancel</button>
+    <%= form.submit "Save", class: "rounded-md bg-rose-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-rose-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-600" %>
+  </div>
+<% end %>

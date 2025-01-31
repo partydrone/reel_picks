@@ -29,40 +29,40 @@
       <div>
         <%= form.label :first_name, "First name", class: "block text-sm/6 font-medium text-white" %>
         <div class="mt-2">
-          <%= form.text_field :first_name, autofocus: true, autocomplete: "first_name", class: ["block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red-500 sm:text-sm/6", {"outline-white/10": @user.errors[:first_name].none?, "outline-red/10": @user.errors[:first_name].any?}] %>
+          <%= form.text_field :first_name, autofocus: true, autocomplete: "first_name", class: ["block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-rose-500 sm:text-sm/6", {"outline-white/10": @user.errors[:first_name].none?, "outline-rose/10": @user.errors[:first_name].any?}] %>
         </div>
       </div>
 
       <div>
         <%= form.label :last_name, "Last name", class: "block text-sm/6 font-medium text-white" %>
         <div class="mt-2">
-          <%= form.text_field :last_name, autocomplete: "last_name", class: ["block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red-500 sm:text-sm/6", {"outline-white/10": @user.errors[:last_name].none?, "outline-red-500": @user.errors[:last_name].any?}] %>
+          <%= form.text_field :last_name, autocomplete: "last_name", class: ["block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-rose-500 sm:text-sm/6", {"outline-white/10": @user.errors[:last_name].none?, "outline-rose-500": @user.errors[:last_name].any?}] %>
         </div>
       </div>
 
       <div>
-        <%= form.label :email_address, "Email address", class: "block text-sm/6 font-medium text-white" %>
+        <%= form.label :email_address, "Email address *", class: "block text-sm/6 font-medium text-white" %>
         <div class="mt-2">
-          <%= form.email_field :email_address, required: true, autocomplete: "email", class: ["block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red-500 sm:text-sm/6", {"outline-white/10": @user.errors[:email_address].none?, "outline-red-500": @user.errors[:email_address].any?}] %>
+          <%= form.email_field :email_address, requirose: true, autocomplete: "email", class: ["block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-rose-500 sm:text-sm/6", {"outline-white/10": @user.errors[:email_address].none?, "outline-rose-500": @user.errors[:email_address].any?}] %>
         </div>
       </div>
 
       <div>
-        <%= form.label :password, "Password", class: "block text-sm/6 font-medium text-white" %>
+        <%= form.label :password, "Password *", class: "block text-sm/6 font-medium text-white" %>
         <div class="mt-2">
-          <%= form.password_field :password, required: true, autocomplete: "password", maxlength: 72, class: ["block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red-500 sm:text-sm/6", {"outline-white/10": @user.errors[:password].none?, "outline-red-500": @user.errors[:password].any?}] %>
+          <%= form.password_field :password, requirose: true, autocomplete: "password", maxlength: 72, class: ["block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-rose-500 sm:text-sm/6", {"outline-white/10": @user.errors[:password].none?, "outline-rose-500": @user.errors[:password].any?}] %>
         </div>
       </div>
 
       <div>
-        <%= form.label :password_confirmation, "Confirm password", class: "block text-sm/6 font-medium text-white" %>
+        <%= form.label :password_confirmation, "Confirm password *", class: "block text-sm/6 font-medium text-white" %>
         <div class="mt-2">
-          <%= form.password_field :password_confirmation, required: true, autocomplete: "password", maxlength: 72, class: ["block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red-500 sm:text-sm/6", {"outline-white/10": @user.errors[:password_confirmation].none?, "outline-red-500": @user.errors[:password_confirmation].any?}] %>
+          <%= form.password_field :password_confirmation, requirose: true, autocomplete: "password", maxlength: 72, class: ["block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-rose-500 sm:text-sm/6", {"outline-white/10": @user.errors[:password_confirmation].none?, "outline-rose-500": @user.errors[:password_confirmation].any?}] %>
         </div>
       </div>
 
       <div>
-        <%= form.submit "Sign up", class: "flex w-full justify-center rounded-md bg-red-500 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500" %>
+        <%= form.submit "Sign up", class: "flex w-full justify-center rounded-md bg-rose-500 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-rose-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-500" %>
       </div>
     <% end %>
   </div>

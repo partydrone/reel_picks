@@ -35,7 +35,7 @@
       <div>
         <%= label_tag :email_address, "Email address", class: "block text-sm/6 font-medium text-white" %>
         <div class="mt-2">
-          <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "email", value: params[:email_address], class: "block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-white/10 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red-500 sm:text-sm/6" %>
+          <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "email", value: params[:email_address], class: "block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-white/10 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-rose-500 sm:text-sm/6" %>
         </div>
       </div>
 
@@ -43,22 +43,22 @@
         <div class="flex items-center justify-between">
           <%= label_tag :password, "Password", class: "block text-sm/6 font-medium text-white" %>
           <div class="text-sm">
-            <%= link_to "Forgot password?", new_password_path, class: "font-semibold text-red-400 hover:text-red-300" %>
+            <%= link_to "Forgot password?", new_password_path, class: "font-semibold text-rose-400 hover:text-rose-300" %>
           </div>
         </div>
         <div class="mt-2">
-          <%= form.password_field :password, required: true, autocomplete: "current-password", maxlength: 72, class: "block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-white/10 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red-500 sm:text-sm/6" %>
+          <%= form.password_field :password, required: true, autocomplete: "current-password", maxlength: 72, class: "block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-white/10 placeholder:text-stone-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-rose-500 sm:text-sm/6" %>
         </div>
       </div>
 
       <div>
-        <%= form.submit "Sign in", class: "flex w-full justify-center rounded-md bg-red-500 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500" %>
+        <%= form.submit "Sign in", class: "flex w-full justify-center rounded-md bg-rose-500 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-rose-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-500" %>
       </div>
     <% end %>
 
     <p class="mt-10 text-center text-sm/6 text-stone-400">
       Not a member?
-      <%= link_to "Sign up!", new_user_path, class: "font-semibod text-red-400 hover:text-red-300" %>
+      <%= link_to "Sign up!", new_user_path, class: "font-semibod text-rose-400 hover:text-rose-300" %>
     </p>
   </div>
 </div>
