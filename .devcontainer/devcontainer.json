@@ -30,7 +30,8 @@
       "extensions": [
         "GitHub.copilot",
         "Shopify.ruby-extensions-pack",
-        "bradlc.vscode-tailwindcss"
+        "bradlc.vscode-tailwindcss",
+        "marcoroth.stimulus-lsp"
       ],
       "settings": {
         "workbench.colorTheme": "Spinel",
