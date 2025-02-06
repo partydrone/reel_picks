@@ -23,13 +23,13 @@
     <div class="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-stone-900/10 pb-12 md:grid-cols-3">
       <div>
         <h2 class="text-base/7 font-semibold text-stone-900">Details</h2>
-        <p class="mt-1 text-sm/6 text-stone-600">Give your contest a creative name.</p>
+        <p class="mt-1 text-sm/6 text-stone-600">Give your contest a good name.</p>
     </div>
 
     <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2">
       <div class="sm:col-span-4">
         <%= form.label :title, class: "block text-sm/6 font-medium text-stone-900" %>
-        <%= form.text_field :title, class: ["block w-full rounded-md bg-white px-3 py-1.5 text-base text-stone-900 outline outline-1 -outline-offset-1 placeholder:text-stone-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-rose-600 sm:text-sm/6", {"outline-stone-300": contest.errors[:last_name].none?, "outline-red-300": contest.errors[:last_name].any?}] %>
+        <%= form.text_field :title, autofocus: true, required: false, class: ["block w-full rounded-md bg-white px-3 py-1.5 text-base text-stone-900 outline outline-1 -outline-offset-1 placeholder:text-stone-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-rose-600 sm:text-sm/6", {"outline-stone-300": contest.errors[:last_name].none?, "outline-red-300": contest.errors[:last_name].any?}] %>
       </div>
     </div>
   </div>

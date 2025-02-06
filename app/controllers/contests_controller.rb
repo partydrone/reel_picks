@@ -3,7 +3,7 @@ class ContestsController < ApplicationController
 
   # GET /contests or /contests.json
   def index
-    @contests = Contest.all
+    @contests = Current.user.contests.all
   end
 
   # GET /contests/1 or /contests/1.json
@@ -12,7 +12,7 @@ class ContestsController < ApplicationController
 
   # GET /contests/new
   def new
-    @contest = Contest.new
+    @contest = Current.user.contests.new
   end
 
   # GET /contests/1/edit
@@ -21,10 +21,10 @@ class ContestsController < ApplicationController
 
   # POST /contests or /contests.json
   def create
-    @contest = Contest.new(contest_params)
+    @contest = Current.user.contests.create(contest_params)
 
     respond_to do |format|
-      if @contest.save
+      if @contest.persisted?
         format.html { redirect_to @contest, notice: "Contest was successfully created." }
         format.json { render :show, status: :created, location: @contest }
       else
