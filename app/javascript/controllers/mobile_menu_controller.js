@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="mobile-menu"
 export default class extends Controller {
-  static targets = ["menuButton", "closeButton", "menu"]
+  static targets = ["openMenuButton", "closeMenuButton", "menu"]
   
   connect() {
     console.debug("Connecting mobile menu controller…")
@@ -10,26 +10,17 @@ export default class extends Controller {
 
   show() {
     console.debug("Showing mobile menu…")
-
     this.menuTarget.classList.remove("hidden")
-
-    this.menuButtonTarget.classList.add("hidden")
-    this.menuButtonTarget.classList.remove("block")
-
-    this.closeButtonTarget.classList.remove("hidden")
-    this.closeButtonTarget.classList.add("block")
+    this._hideOpenMenuButton()
+    this._showCloseMenuButton()
   }
 
   hide() {
+    if (this.menuTarget.classList.contains("hidden")) return
     console.debug("Hiding mobile menu…")
-
     this.menuTarget.classList.add("hidden")
-
-    this.menuButtonTarget.classList.remove("hidden")
-    this.menuButtonTarget.classList.add("block")
-
-    this.closeButtonTarget.classList.add("hidden")
-    this.closeButtonTarget.classList.remove("block")
+    this._hideCloseMenuButton()
+    this._showOpenMenuButton()
   }
 
   toggle() {
@@ -40,5 +31,25 @@ export default class extends Controller {
     } else {
       this.hide()
     }
+  }
+
+  _hideCloseMenuButton() {
+    this.closeMenuButtonTarget.classList.add("hidden")
+    this.closeMenuButtonTarget.classList.remove("block")
+  }
+
+  _hideOpenMenuButton() {
+    this.openMenuButtonTarget.classList.add("hidden")
+    this.openMenuButtonTarget.classList.remove("block")
+  }
+
+  _showCloseMenuButton() {
+    this.closeMenuButtonTarget.classList.remove("hidden")
+    this.closeMenuButtonTarget.classList.add("block")
+  }
+
+  _showOpenMenuButton() {
+    this.openMenuButtonTarget.classList.remove("hidden")
+    this.openMenuButtonTarget.classList.add("block")
   }
 }
